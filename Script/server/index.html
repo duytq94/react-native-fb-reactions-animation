@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="QRCode generate" name="description" />
+    <script src="./jquery.min.js" type="text/javascript"></script>
+    <script src="./qrcode.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function makeCode(qrCode, data) {
+            qrCode.clear();
+            qrCode.makeCode(data);
+            $('#data').text(data);
+        }
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body,
+        section,
+        div {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            color: #fff;
+            font-family: sans-serif;
+            font-size: 1.25rem;
+            line-height: 150%;
+            text-align: center;
+            text-shadow: 0 2px 2px #b6701e;
+        }
+
+        section {
+            width: 100%;
+        }
+
+        article {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            padding: 1rem;
+            text-align: center;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            margin: 0 0 0.75rem 0;
+        }
+
+        /* Pattern styles */
+
+        .left-half {
+            background-color: #ff9e2c;
+            float: left;
+            width: 50%;
+            margin: 10;
+        }
+
+        .right-half {
+            background-color: #b6701e;
+            float: left;
+            width: 50%;
+            margin: 10;
+        }
+    </style>
+</head>
+
+
+<body style="text-align: center;">
+    <section class="container">
+        <div class="left-half">
+            <article>
+                <h1>ANDROID</h1>
+                <div id="qrAndroidcode" style="margin: auto; width:300px; height:300px;">
+                </div>
+                <p id="androidData">
+                </p>
+            </article>
+        </div>
+        <div class="right-half">
+            <article>
+                <h1>IOS</h1>
+                <div id="qriOscode" style="margin: auto; width:300px; height:300px;">
+                </div>
+                <p id="iOsData">
+                </p>
+            </article>
+        </div>
+    </section>
+
+
+    <script type="text/javascript">
+        var _width = 300;
+        var _height = 300;
+
+        var androidData = window.location.protocol + '//' + window.location.host + '/dist/android/ANDROID.apk'
+        var iOsData = 'itms-services://?action=download-manifest&url=https://ncjsupload.herokuapp.com/manifest.plist'
+
+        var qrAndroidcode = new QRCode("qrAndroidcode", { width: _width, height: _height, colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
+        var qriOscode = new QRCode("qriOscode", { width: _width, height: _height, colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
+
+        qrAndroidcode.clear();
+        qrAndroidcode.makeCode(androidData);
+        $('#androidData').text(androidData);
+
+        qriOscode.clear();
+        qriOscode.makeCode(iOsData);
+        $('#iOsData').text(iOsData);
+
+    </script>
+</body>
+
+</html>

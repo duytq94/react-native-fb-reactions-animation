@@ -1,0 +1,9 @@
+{
+	"BUILD_ENVIRONMENT":"staging",
+	"NEED_RESET_CACHE":false,
+	"BUNDLE_ID":"com.app.apptest",
+	"DEVELOPMENT_TEAM":"xxxxxxxxxx",
+	"PROVISIONING_PROFILE_NAME":"",
+	"CODE_SIGN_IDENTITY":"",
+	"BUILD_HOST":"LOCAL_HOST"
+}
