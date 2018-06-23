@@ -11,7 +11,7 @@ const PrimaryNav = StackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'MainScreen',
+  initialRouteName: 'AnimationScreen',
   navigationOptions: {
     headerStyle: styles.header
   }
