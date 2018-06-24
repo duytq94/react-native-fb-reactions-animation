@@ -197,6 +197,11 @@ export default class AnimationScreen extends Component {
           {/*Content*/}
           <View style={styles.viewContent}>
 
+            {/*Box*/}
+            <Animated.View  style={styles.viewBox}>
+
+            </Animated.View>
+
             {/*Button*/}
             <View style={styles.viewBtn} onTouchStart={this.onTouchStart} onTouchEnd={this.onTouchEnd}>
               <Animated.Image source={images.like_static}

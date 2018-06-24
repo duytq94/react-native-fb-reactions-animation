@@ -55,6 +55,16 @@ export default StyleSheet.create({
     marginRight: 20,
   },
 
+  // Box
+  viewBox: {
+    borderWidth: 1,
+    borderRadius: 30,
+    width: 300,
+    height: 50,
+    marginTop: 100,
+    position: 'absolute',
+  },
+
   // Button like
   viewBtn: {
     flexDirection: 'row',
