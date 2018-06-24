@@ -61,11 +61,15 @@ export default class AnimationScreen extends Component {
             <Image style={styles.icBack} source={images.ic_back}/>
           </TouchableOpacity>
           <Text style={styles.titleToolbar}>ANIMATION</Text>
-          <View style={styles.icBack}/>
+          <View style={styles.icTrail}/>
         </View>
 
         {/*Body*/}
-        <View style={{backgroundColor: 'cyan', flex: 1}} {...this.rootPanResponder.panHandlers} >
+        <View style={styles.viewBody} {...this.rootPanResponder.panHandlers} >
+          {/*Top space*/}
+          <View style={styles.viewTopSpace}/>
+
+          {/*Button*/}
           <View style={styles.viewBtn} onTouchStart={this.onTouchStart}
                 onTouchEnd={this.onTouchEnd}>
             <Text style={styles.textBtn}>Like</Text>

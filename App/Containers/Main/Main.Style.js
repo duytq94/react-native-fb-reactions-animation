@@ -5,10 +5,10 @@ export default StyleSheet.create({
     width: '100%',
     height: 48,
     justifyContent: 'center',
-    backgroundColor: 'white'
+    backgroundColor: '#3b5998'
   },
   titleToolbar: {
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 18,
     alignSelf: 'center'
