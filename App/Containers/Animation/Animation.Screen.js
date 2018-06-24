@@ -72,14 +72,21 @@ export default class AnimationScreen extends Component {
   onTouchStart = () => {
     this.isTouchBtn = true
     console.log('touch start')
-    this.timer = setInterval(this.doAnimationLongTouch, this.durationLongPress)
+    this.timer = setTimeout(this.doAnimationLongTouch, this.durationLongPress)
   }
 
   onTouchEnd = () => {
     this.isTouchBtn = false
+    this.setState({
+      isLongTouch: false
+    })
     console.log('touch end')
-    clearInterval(this.timer)
-    this.doAnimationQuickTouch()
+    if (!this.state.isLongTouch) {
+      clearTimeout(this.timer)
+      this.doAnimationQuickTouch()
+    } else {
+      this.doAnimationLongTouchReverse()
+    }
   }
 
   doAnimationQuickTouch = () => {
@@ -104,13 +111,16 @@ export default class AnimationScreen extends Component {
   }
 
   doAnimationLongTouch = () => {
+    this.setState({
+      isLongTouch: true,
+    })
 
-    this.tiltIconAnim2.setValue('0deg')
+    this.tiltIconAnim2.setValue(0)
     this.zoomIconAnim2.setValue(1)
     this.zoomTextAnim2.setValue(1)
     Animated.parallel([
       Animated.timing(this.tiltIconAnim2, {
-        toValue: '20deg',
+        toValue: 1,
         duration: this.durationAnimationLongTouch * this.timeDilation,
       }),
       Animated.timing(this.zoomIconAnim2, {
@@ -122,9 +132,30 @@ export default class AnimationScreen extends Component {
         duration: this.durationAnimationLongTouch * this.timeDilation,
       })
     ]).start()
+  }
+
+  doAnimationLongTouchReverse = () => {
     this.setState({
       isLongTouch: true,
     })
+
+    this.tiltIconAnim2.setValue(1)
+    this.zoomIconAnim2.setValue(0.8)
+    this.zoomTextAnim2.setValue(0.8)
+    Animated.parallel([
+      Animated.timing(this.tiltIconAnim2, {
+        toValue: 0,
+        duration: this.durationAnimationLongTouch * this.timeDilation,
+      }),
+      Animated.timing(this.zoomIconAnim2, {
+        toValue: 1,
+        duration: this.durationAnimationLongTouch * this.timeDilation,
+      }),
+      Animated.timing(this.zoomTextAnim2, {
+        toValue: 1,
+        duration: this.durationAnimationLongTouch * this.timeDilation,
+      })
+    ]).start()
   }
 
   render () {
@@ -139,6 +170,11 @@ export default class AnimationScreen extends Component {
     let zoomBounceTextAnim = this.zoomIconAnim.interpolate({
       inputRange: [0, 0.2, 0.8, 1],
       outputRange: [1, 0.8, 1.15, 1]
+    })
+
+    let tiltBounceIconAnim2 = this.tiltIconAnim2.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '20deg']
     })
 
     return (
@@ -167,10 +203,14 @@ export default class AnimationScreen extends Component {
                               style={[styles.imgLikeInBtn,
                                 {
                                   transform: [
-                                    {rotate: this.state.isLongTouch ? this.tiltIconAnim2 : tiltBounceIconAnim},
+                                    {rotate: this.state.isLongTouch ? tiltBounceIconAnim2 : tiltBounceIconAnim},
                                     {scale: this.state.isLongTouch ? this.zoomIconAnim2 : zoomBounceIconAnim}]
                                 }]}/>
-              <Animated.Text style={[styles.textBtn, {transform: [{scale: zoomBounceTextAnim}]}]}>Like</Animated.Text>
+              <Animated.Text
+                style={[styles.textBtn,
+                  {transform: [{scale: this.state.isLongTouch ? this.zoomTextAnim2 : zoomBounceTextAnim}]}]}>
+                Like
+              </Animated.Text>
             </View>
           </View>
 
