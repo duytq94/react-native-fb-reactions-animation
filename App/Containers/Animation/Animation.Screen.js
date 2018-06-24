@@ -77,9 +77,6 @@ export default class AnimationScreen extends Component {
 
   onTouchEnd = () => {
     this.isTouchBtn = false
-    this.setState({
-      isLongTouch: false
-    })
     console.log('touch end')
     if (!this.state.isLongTouch) {
       clearTimeout(this.timer)
@@ -135,9 +132,6 @@ export default class AnimationScreen extends Component {
   }
 
   doAnimationLongTouchReverse = () => {
-    this.setState({
-      isLongTouch: true,
-    })
 
     this.tiltIconAnim2.setValue(1)
     this.zoomIconAnim2.setValue(0.8)
@@ -155,7 +149,13 @@ export default class AnimationScreen extends Component {
         toValue: 1,
         duration: this.durationAnimationLongTouch * this.timeDilation,
       })
-    ]).start()
+    ]).start(this.onAnimationLongTouchComplete)
+  }
+
+  onAnimationLongTouchComplete = () => {
+    this.setState({
+      isLongTouch: false,
+    })
   }
 
   render () {
