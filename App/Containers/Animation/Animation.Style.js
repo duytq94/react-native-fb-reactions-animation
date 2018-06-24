@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
+  // Container
   viewContainer: {
-    flex: 1
+    flex: 1,
+    flexDirection: 'column'
   },
+
+  // Toolbar
   toolbar: {
     width: '100%',
     height: 48,
@@ -30,25 +34,48 @@ export default StyleSheet.create({
     flex: 1
   },
 
-  viewTopSpace: {
-    width: '100%',
-    height: 150,
-  },
-
+  // Body
   viewBody: {
     flex: 1,
+    flexDirection: 'column',
   },
 
-  viewBtn: {
-    backgroundColor: '#7e8da6',
-    padding: 10,
-    borderRadius: 10,
-    margin: 10,
-    width: 100,
+  // Top blank space
+  viewTopSpace: {
+    width: '100%',
     height: 100,
   },
-  textBtn: {
-    color: 'white',
-    textAlign: 'center'
+
+  // Main content
+  viewContent: {
+    backgroundColor: 'rgba(255 ,248 ,225, 0.7)',
+    flexDirection: 'column',
+    height: 350,
+    marginLeft: 20,
+    marginRight: 20,
   },
+
+  // Button like
+  viewBtn: {
+    flexDirection: 'row',
+    width: 100,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderColor: 'grey',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 3,
+    marginTop: 190,
+  },
+  textBtn: {
+    color: 'grey',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  imgLikeInBtn: {
+    width: 25,
+    height: 25,
+    tintColor: 'grey',
+  }
+
 })

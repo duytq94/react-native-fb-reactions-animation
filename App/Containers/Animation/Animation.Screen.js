@@ -8,16 +8,48 @@ export default class AnimationScreen extends Component {
 
   constructor (props) {
     super(props)
-    backPress = this.handleBackPress.bind(this)
-    isPressBtn = false
+    this.backPress = this.handleBackPress.bind(this)
 
+    // Slow down speed animation here (1 = default)
+    this.timeDilation = 1
+
+    // If duration touch longer than it, mean long touch
+    this.durationLongPress = 250
+
+    // Variables to check
+    this.isTouchBtn = false
+    this.state = {
+      isLongTouch: false,
+    }
+
+    // Duration animation
+    this.durationAnimationQuickTouch = 500
+    this.durationAnimationLongTouch = 150
+
+    // Animation when quick touch button
+    this.tiltIconAnim = new Animated.Value(0)
+    this.zoomIconAnim = new Animated.Value(0)
+    this.zoomTextAnim = new Animated.Value(0)
+
+    // Animation when long touch button
+    this.tiltIconAnim2 = new Animated.Value(0)
+    this.zoomIconAnim2 = new Animated.Value(0)
+    this.zoomTextAnim2 = new Animated.Value(0)
   }
 
   componentWillMount () {
-    BackHandler.addEventListener('hardwareBackPress', backPress)
+    BackHandler.addEventListener('hardwareBackPress', this.backPress)
 
+    this.setupPanResponder()
+  }
+
+  componentWillUnmount () {
+    BackHandler.removeEventListener('hardwareBackPress', this.backPress)
+  }
+
+  setupPanResponder () {
     this.rootPanResponder = PanResponder.create({
-      onMoveShouldSetPanResponder: (evt, gestureState) => !isPressBtn,
+      onMoveShouldSetPanResponder: (evt, gestureState) => !this.isTouchBtn,
 
       onPanResponderGrant: (evt, gestureState) => {
         console.log('on grant')
@@ -30,11 +62,6 @@ export default class AnimationScreen extends Component {
         console.log('on release')
       },
     })
-
-  }
-
-  componentWillUnmount () {
-    BackHandler.removeEventListener('hardwareBackPress', backPress)
   }
 
   handleBackPress () {
@@ -43,16 +70,77 @@ export default class AnimationScreen extends Component {
   }
 
   onTouchStart = () => {
-    isPressBtn = true
+    this.isTouchBtn = true
     console.log('touch start')
+    this.timer = setInterval(this.doAnimationLongTouch, this.durationLongPress)
   }
 
   onTouchEnd = () => {
-    isPressBtn = false
+    this.isTouchBtn = false
     console.log('touch end')
+    clearInterval(this.timer)
+    this.doAnimationQuickTouch()
+  }
+
+  doAnimationQuickTouch = () => {
+
+    this.tiltIconAnim.setValue(0)
+    this.zoomIconAnim.setValue(0)
+    this.zoomTextAnim.setValue(0)
+    Animated.parallel([
+      Animated.timing(this.tiltIconAnim, {
+        toValue: 1,
+        duration: this.durationAnimationQuickTouch * this.timeDilation,
+      }),
+      Animated.timing(this.zoomIconAnim, {
+        toValue: 1,
+        duration: this.durationAnimationQuickTouch * this.timeDilation,
+      }),
+      Animated.timing(this.zoomTextAnim, {
+        toValue: 1,
+        duration: this.durationAnimationQuickTouch * this.timeDilation,
+      })
+    ]).start()
+  }
+
+  doAnimationLongTouch = () => {
+
+    this.tiltIconAnim2.setValue('0deg')
+    this.zoomIconAnim2.setValue(1)
+    this.zoomTextAnim2.setValue(1)
+    Animated.parallel([
+      Animated.timing(this.tiltIconAnim2, {
+        toValue: '20deg',
+        duration: this.durationAnimationLongTouch * this.timeDilation,
+      }),
+      Animated.timing(this.zoomIconAnim2, {
+        toValue: 0.8,
+        duration: this.durationAnimationLongTouch * this.timeDilation,
+      }),
+      Animated.timing(this.zoomTextAnim2, {
+        toValue: 0.8,
+        duration: this.durationAnimationLongTouch * this.timeDilation,
+      })
+    ]).start()
+    this.setState({
+      isLongTouch: true,
+    })
   }
 
   render () {
+    let tiltBounceIconAnim = this.tiltIconAnim.interpolate({
+      inputRange: [0, 0.2, 0.8, 1],
+      outputRange: ['0deg', '20deg', '-15deg', '0deg']
+    })
+    let zoomBounceIconAnim = this.zoomIconAnim.interpolate({
+      inputRange: [0, 0.2, 0.8, 1],
+      outputRange: [1, 0.8, 1.15, 1]
+    })
+    let zoomBounceTextAnim = this.zoomIconAnim.interpolate({
+      inputRange: [0, 0.2, 0.8, 1],
+      outputRange: [1, 0.8, 1.15, 1]
+    })
+
     return (
       <View style={styles.viewContainer}>
         {/*Toolbar*/}
@@ -69,11 +157,23 @@ export default class AnimationScreen extends Component {
           {/*Top space*/}
           <View style={styles.viewTopSpace}/>
 
-          {/*Button*/}
-          <View style={styles.viewBtn} onTouchStart={this.onTouchStart}
-                onTouchEnd={this.onTouchEnd}>
-            <Text style={styles.textBtn}>Like</Text>
+
+          {/*Content*/}
+          <View style={styles.viewContent}>
+
+            {/*Button*/}
+            <View style={styles.viewBtn} onTouchStart={this.onTouchStart} onTouchEnd={this.onTouchEnd}>
+              <Animated.Image source={images.like_static}
+                              style={[styles.imgLikeInBtn,
+                                {
+                                  transform: [
+                                    {rotate: this.state.isLongTouch ? this.tiltIconAnim2 : tiltBounceIconAnim},
+                                    {scale: this.state.isLongTouch ? this.zoomIconAnim2 : zoomBounceIconAnim}]
+                                }]}/>
+              <Animated.Text style={[styles.textBtn, {transform: [{scale: zoomBounceTextAnim}]}]}>Like</Animated.Text>
+            </View>
           </View>
+
         </View>
       </View>
 
