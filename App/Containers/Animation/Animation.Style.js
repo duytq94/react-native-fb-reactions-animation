@@ -63,8 +63,10 @@ export default StyleSheet.create({
     height: 50,
     marginTop: 100,
     position: 'absolute',
+
+    // Has to set color for elevation
+    backgroundColor: 'white',
     elevation: 6,
-    backgroundColor: 'white'
   },
 
   // Button like
