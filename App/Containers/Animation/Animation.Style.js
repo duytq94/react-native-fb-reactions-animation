@@ -48,7 +48,8 @@ export default StyleSheet.create({
 
   // Main content
   viewContent: {
-    backgroundColor: 'rgba(255 ,248 ,225, 0.7)',
+    borderWidth: 1,
+    borderColor: 'red',
     flexDirection: 'column',
     height: 350,
     marginLeft: 20,
@@ -57,12 +58,13 @@ export default StyleSheet.create({
 
   // Box
   viewBox: {
-    borderWidth: 1,
     borderRadius: 30,
     width: 300,
     height: 50,
     marginTop: 100,
     position: 'absolute',
+    elevation: 6,
+    backgroundColor: 'white'
   },
 
   // Button like
@@ -76,6 +78,7 @@ export default StyleSheet.create({
     padding: 10,
     borderRadius: 3,
     marginTop: 190,
+    backgroundColor: 'white',
   },
   textBtn: {
     color: 'grey',
@@ -85,7 +88,6 @@ export default StyleSheet.create({
   imgLikeInBtn: {
     width: 25,
     height: 25,
-    tintColor: 'grey',
   }
 
 })

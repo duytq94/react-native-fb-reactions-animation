@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Animated, BackHandler, Image, Text, TouchableOpacity, View, PanResponder } from 'react-native'
+import { Animated, BackHandler, Image, PanResponder, Text, TouchableOpacity, View } from 'react-native'
 
 import styles from './Animation.Style'
 import images from '../../Themes/Images'
@@ -20,6 +20,7 @@ export default class AnimationScreen extends Component {
     this.isTouchBtn = false
     this.state = {
       isLongTouch: false,
+      isLiked: false,
     }
 
     // Duration animation
@@ -87,24 +88,32 @@ export default class AnimationScreen extends Component {
   }
 
   doAnimationQuickTouch = () => {
-
-    this.tiltIconAnim.setValue(0)
-    this.zoomIconAnim.setValue(0)
-    this.zoomTextAnim.setValue(0)
-    Animated.parallel([
-      Animated.timing(this.tiltIconAnim, {
-        toValue: 1,
-        duration: this.durationAnimationQuickTouch * this.timeDilation,
-      }),
-      Animated.timing(this.zoomIconAnim, {
-        toValue: 1,
-        duration: this.durationAnimationQuickTouch * this.timeDilation,
-      }),
-      Animated.timing(this.zoomTextAnim, {
-        toValue: 1,
-        duration: this.durationAnimationQuickTouch * this.timeDilation,
+    if (!this.state.isLiked) {
+      this.setState({
+        isLiked: true,
       })
-    ]).start()
+      this.tiltIconAnim.setValue(0)
+      this.zoomIconAnim.setValue(0)
+      this.zoomTextAnim.setValue(0)
+      Animated.parallel([
+        Animated.timing(this.tiltIconAnim, {
+          toValue: 1,
+          duration: this.durationAnimationQuickTouch * this.timeDilation,
+        }),
+        Animated.timing(this.zoomIconAnim, {
+          toValue: 1,
+          duration: this.durationAnimationQuickTouch * this.timeDilation,
+        }),
+        Animated.timing(this.zoomTextAnim, {
+          toValue: 1,
+          duration: this.durationAnimationQuickTouch * this.timeDilation,
+        })
+      ]).start()
+    } else {
+      this.setState({
+        isLiked: false,
+      })
+    }
   }
 
   doAnimationLongTouch = () => {
@@ -132,7 +141,6 @@ export default class AnimationScreen extends Component {
   }
 
   doAnimationLongTouchReverse = () => {
-
     this.tiltIconAnim2.setValue(1)
     this.zoomIconAnim2.setValue(0.8)
     this.zoomTextAnim2.setValue(0.8)
@@ -198,13 +206,13 @@ export default class AnimationScreen extends Component {
           <View style={styles.viewContent}>
 
             {/*Box*/}
-            <Animated.View  style={styles.viewBox}>
+            <Animated.View style={styles.viewBox}>
 
             </Animated.View>
 
             {/*Button*/}
             <View style={styles.viewBtn} onTouchStart={this.onTouchStart} onTouchEnd={this.onTouchEnd}>
-              <Animated.Image source={images.like_static}
+              <Animated.Image source={this.state.isLiked ? images.like_static_fill : images.like_static}
                               style={[styles.imgLikeInBtn,
                                 {
                                   transform: [
@@ -212,7 +220,7 @@ export default class AnimationScreen extends Component {
                                     {scale: this.state.isLongTouch ? this.zoomIconAnim2 : zoomBounceIconAnim}]
                                 }]}/>
               <Animated.Text
-                style={[styles.textBtn,
+                style={[styles.textBtn, {color: this.state.isLiked ? '#3b5998' : 'grey'},
                   {transform: [{scale: this.state.isLongTouch ? this.zoomTextAnim2 : zoomBounceTextAnim}]}]}>
                 Like
               </Animated.Text>
