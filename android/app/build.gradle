@@ -182,6 +182,12 @@ android {
 }
 
 dependencies {
+    // If your app supports Android versions before Ice Cream Sandwich (API level 14)
+    compile 'com.facebook.fresco:animated-base-support:1.3.0'
+
+    // For animated GIF support
+    compile 'com.facebook.fresco:animated-gif:1.3.0'
+
     compile project(':react-native-config')
     compile project(':react-native-i18n')
     compile project(':react-native-vector-icons')

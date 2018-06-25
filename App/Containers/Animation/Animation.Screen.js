@@ -26,16 +26,23 @@ export default class AnimationScreen extends Component {
     // Duration animation
     this.durationAnimationQuickTouch = 500
     this.durationAnimationLongTouch = 150
+    this.durationAnimationBox = 500
 
-    // Animation when quick touch button
+    // Animation button when quick touch button
     this.tiltIconAnim = new Animated.Value(0)
     this.zoomIconAnim = new Animated.Value(0)
     this.zoomTextAnim = new Animated.Value(0)
 
-    // Animation when long touch button
+    // Animation when button long touch button
     this.tiltIconAnim2 = new Animated.Value(0)
     this.zoomIconAnim2 = new Animated.Value(0)
     this.zoomTextAnim2 = new Animated.Value(0)
+
+    // Animation of the box
+    this.fadeBoxAnim = new Animated.Value(0)
+
+    // Icons
+    this.moveRightGroupIcon = new Animated.Value(10)
   }
 
   componentWillMount () {
@@ -124,6 +131,11 @@ export default class AnimationScreen extends Component {
     this.tiltIconAnim2.setValue(0)
     this.zoomIconAnim2.setValue(1)
     this.zoomTextAnim2.setValue(1)
+
+    this.fadeBoxAnim.setValue(0)
+
+    this.moveRightGroupIcon.setValue(10)
+
     Animated.parallel([
       Animated.timing(this.tiltIconAnim2, {
         toValue: 1,
@@ -136,6 +148,17 @@ export default class AnimationScreen extends Component {
       Animated.timing(this.zoomTextAnim2, {
         toValue: 0.8,
         duration: this.durationAnimationLongTouch * this.timeDilation,
+      }),
+
+      Animated.timing(this.fadeBoxAnim, {
+        toValue: 1,
+        duration: this.durationAnimationBox * this.timeDilation,
+        delay: 350,
+      }),
+
+      Animated.timing(this.moveRightGroupIcon, {
+        toValue: 20,
+        duration: this.durationAnimationBox * this.timeDilation,
       })
     ]).start()
   }
@@ -144,6 +167,11 @@ export default class AnimationScreen extends Component {
     this.tiltIconAnim2.setValue(1)
     this.zoomIconAnim2.setValue(0.8)
     this.zoomTextAnim2.setValue(0.8)
+
+    this.fadeBoxAnim.setValue(1)
+
+    this.moveRightGroupIcon.setValue(20)
+
     Animated.parallel([
       Animated.timing(this.tiltIconAnim2, {
         toValue: 0,
@@ -156,6 +184,16 @@ export default class AnimationScreen extends Component {
       Animated.timing(this.zoomTextAnim2, {
         toValue: 1,
         duration: this.durationAnimationLongTouch * this.timeDilation,
+      }),
+
+      Animated.timing(this.fadeBoxAnim, {
+        toValue: 0,
+        duration: this.durationAnimationLongTouch * this.timeDilation,
+      }),
+
+      Animated.timing(this.moveRightGroupIcon, {
+        toValue: 10,
+        duration: this.durationAnimationBox * this.timeDilation,
       })
     ]).start(this.onAnimationLongTouchComplete)
   }
@@ -206,7 +244,15 @@ export default class AnimationScreen extends Component {
           <View style={styles.viewContent}>
 
             {/*Box*/}
-            <Animated.View style={styles.viewBox}>
+            <Animated.View style={[styles.viewBox, {opacity: this.fadeBoxAnim}]}/>
+
+            {/*Group icon*/}
+            <Animated.View style={[styles.viewWrapGroupIcon, {marginLeft: this.moveRightGroupIcon}]}>
+
+              {/*Icon like*/}
+              <Animated.View>
+                <Image style={styles.imgIcon} source={images.like_gif}/>
+              </Animated.View>
 
             </Animated.View>
 

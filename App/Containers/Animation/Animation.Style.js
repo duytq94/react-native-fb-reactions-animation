@@ -51,9 +51,9 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: 'red',
     flexDirection: 'column',
-    height: 350,
+    height: 320,
     marginLeft: 20,
-    marginRight: 20,
+    marginRight: 10,
   },
 
   // Box
@@ -62,8 +62,8 @@ export default StyleSheet.create({
     width: 300,
     height: 50,
     marginTop: 100,
+    marginLeft: 20,
     position: 'absolute',
-
     // Has to set color for elevation
     backgroundColor: 'white',
     elevation: 6,
@@ -79,7 +79,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 3,
-    marginTop: 190,
+    marginTop: 200,
     backgroundColor: 'white',
   },
   textBtn: {
@@ -90,6 +90,18 @@ export default StyleSheet.create({
   imgLikeInBtn: {
     width: 25,
     height: 25,
-  }
+  },
 
+  // Group icon
+  viewWrapGroupIcon: {
+    width: 300,
+    height: 100,
+    marginTop: 100,
+    position: 'absolute',
+    backgroundColor: 'red'
+  },
+  imgIcon: {
+    width: 40,
+    height: 40,
+  }
 })
