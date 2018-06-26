@@ -66,7 +66,7 @@ export default StyleSheet.create({
     position: 'absolute',
     // Has to set color for elevation
     backgroundColor: 'white',
-    elevation: 6,
+    // elevation: 6,
   },
 
   // Button like
@@ -79,7 +79,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 3,
-    marginTop: 200,
+    marginTop: 170,
     backgroundColor: 'white',
   },
   textBtn: {
@@ -94,11 +94,21 @@ export default StyleSheet.create({
 
   // Group icon
   viewWrapGroupIcon: {
+    flexDirection: 'row',
     width: 300,
-    height: 100,
-    marginTop: 100,
+    height: 120,
+    marginTop: 50,
     position: 'absolute',
-    backgroundColor: 'red'
+    borderWidth: 1,
+    borderColor: 'blue',
+    alignItems: 'flex-end',
+    justifyContent: 'space-around',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  viewWrapIcon:{
+    width: 40,
+
   },
   imgIcon: {
     width: 40,
