@@ -108,10 +108,5 @@ export default StyleSheet.create({
   },
   viewWrapIcon:{
     width: 40,
-
   },
-  imgIcon: {
-    width: 40,
-    height: 40,
-  }
 })

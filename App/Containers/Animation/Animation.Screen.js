@@ -173,6 +173,7 @@ export default class AnimationScreen extends Component {
     this.zoomIconAngry.setValue(0)
 
     Animated.parallel([
+      // Button
       Animated.timing(this.tiltIconAnim2, {
         toValue: 1,
         duration: this.durationAnimationLongTouch * this.timeDilation,
@@ -186,12 +187,14 @@ export default class AnimationScreen extends Component {
         duration: this.durationAnimationLongTouch * this.timeDilation,
       }),
 
+      // Box
       Animated.timing(this.fadeBoxAnim, {
         toValue: 1,
         duration: this.durationAnimationBox * this.timeDilation,
         delay: 350,
       }),
 
+      // Group icon
       Animated.timing(this.moveRightGroupIcon, {
         toValue: 20,
         duration: this.durationAnimationBox * this.timeDilation,
@@ -291,6 +294,7 @@ export default class AnimationScreen extends Component {
     this.zoomIconAngry.setValue(40)
 
     Animated.parallel([
+      // Button
       Animated.timing(this.tiltIconAnim2, {
         toValue: 0,
         duration: this.durationAnimationLongTouch * this.timeDilation,
@@ -304,11 +308,13 @@ export default class AnimationScreen extends Component {
         duration: this.durationAnimationLongTouch * this.timeDilation,
       }),
 
+      // Box
       Animated.timing(this.fadeBoxAnim, {
         toValue: 0,
         duration: this.durationAnimationLongTouch * this.timeDilation,
       }),
 
+      // Group icon
       Animated.timing(this.moveRightGroupIcon, {
         toValue: 10,
         duration: this.durationAnimationBox * this.timeDilation,
@@ -317,65 +323,65 @@ export default class AnimationScreen extends Component {
       Animated.timing(this.pushIconLikeUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 250,
       }),
       Animated.timing(this.zoomIconLike, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 250,
       }),
 
       Animated.timing(this.pushIconLoveUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 200,
+        delay: 50,
       }),
       Animated.timing(this.zoomIconLove, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 200,
+        delay: 50,
       }),
 
       Animated.timing(this.pushIconHahaUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 150,
+        delay: 100,
       }),
       Animated.timing(this.zoomIconHaha, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 150,
+        delay: 100,
       }),
 
       Animated.timing(this.pushIconWowUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 100,
+        delay: 150,
       }),
       Animated.timing(this.zoomIconWow, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 100,
+        delay: 150,
       }),
 
       Animated.timing(this.pushIconSadUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 50,
+        delay: 200,
       }),
       Animated.timing(this.zoomIconSad, {
         toValue: 0,
         duration: 250 * this.timeDilation,
-        delay: 50,
+        delay: 200,
       }),
 
       Animated.timing(this.pushIconAngryUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
+        delay: 250,
       }),
       Animated.timing(this.zoomIconAngry, {
         toValue: 0,
         duration: 250 * this.timeDilation,
+        delay: 250,
       }),
     ]).start(this.onAnimationLongTouchComplete)
   }
@@ -432,67 +438,67 @@ export default class AnimationScreen extends Component {
 
               {/*Icon like*/}
               <View style={styles.viewWrapIcon}>
-                <Animated.Image
-                  style={[styles.imgIcon, {
-                    marginBottom: this.pushIconLikeUp,
-                    width: this.zoomIconLike,
-                    height: this.zoomIconLike
-                  }]}
+                <Image
+                  style={{
+                    marginBottom: 25,
+                    width: 40,
+                    height: 40
+                  }}
                   source={images.like_gif}/>
               </View>
 
               {/*Icon love*/}
               <View style={styles.viewWrapIcon}>
-                <Animated.Image
-                  style={[styles.imgIcon, {
-                    marginBottom: this.pushIconLoveUp,
-                    width: this.zoomIconLove,
-                    height: this.zoomIconLove
-                  }]}
+                <Image
+                  style={{
+                    marginBottom: 25,
+                    width: 40,
+                    height: 40
+                  }}
                   source={images.love_gif}/>
               </View>
 
               {/*Icon haha*/}
               <View style={styles.viewWrapIcon}>
-                <Animated.Image
-                  style={[styles.imgIcon, {
-                    marginBottom: this.pushIconHahaUp,
-                    width: this.zoomIconHaha,
-                    height: this.zoomIconHaha
-                  }]}
+                <Image
+                  style={{
+                    marginBottom: 25,
+                    width: 40,
+                    height: 40
+                  }}
                   source={images.haha_gif}/>
               </View>
 
               {/*Icon wow*/}
               <View style={styles.viewWrapIcon}>
-                <Animated.Image
-                  style={[styles.imgIcon, {
-                    marginBottom: this.pushIconWowUp,
-                    width: this.zoomIconWow,
-                    height: this.zoomIconWow
-                  }]}
+                <Image
+                  style={{
+                    marginBottom: 25,
+                    width: 40,
+                    height: 40
+                  }}
                   source={images.wow_gif}/>
               </View>
 
               {/*Icon sad*/}
               <View style={styles.viewWrapIcon}>
-                <Animated.Image
-                  style={[styles.imgIcon, {
-                    marginBottom: this.pushIconSadUp,
-                    width: this.zoomIconSad,
-                    height: this.zoomIconSad
-                  }]}
+                <Image
+                  style={{
+                    marginBottom: 25,
+                    width: 40,
+                    height: 40
+                  }}
                   source={images.sad_gif}/>
               </View>
 
               {/*Icon angry*/}
               <View style={styles.viewWrapIcon}>
-                <Animated.Image
-                  style={[styles.imgIcon, {
-                    marginBottom: this.pushIconAngryUp,
-                    width: this.zoomIconAngry,
-                    height: this.zoomIconAngry
-                  }]}
+                <Image
+                  style={{
+                    marginBottom: 25,
+                    width: 40,
+                    height: 40
+                  }}
                   source={images.angry_gif}/>
               </View>
 
