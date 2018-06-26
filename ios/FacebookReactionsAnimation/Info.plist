@@ -24,21 +24,21 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-  <key>NSAppTransportSecurity</key>
-  <dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-    <key>NSExceptionDomains</key>
-    <dict>
-      <key>localhost</key>
-      <dict>
-        <key>NSExceptionAllowsInsecureHTTPLoads</key>
-        <true/>
-      </dict>
-    </dict>
-  </dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>The app need Location When In Use is accessed for the first time</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
@@ -81,8 +81,6 @@
 	<string>The app need Camera is accessed for the first time</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>The app need Location Always is accessed for the first time</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>The app need Location When In Use is accessed for the first time</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>The app need Microsphone is accessed for the first time</string>
 	<key>NSMotionUsageDescription</key>
