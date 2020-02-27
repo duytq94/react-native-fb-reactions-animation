@@ -17,6 +17,11 @@
 		CC35FD56235962F3008264C5 /* iCielVAGRoundedNext-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 532C3BD20C3247298BADC248 /* iCielVAGRoundedNext-LightItalic.otf */; };
 		CC35FD57235962F3008264C5 /* iCielVAGRoundedNext-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 72F0F3C673CB4DB7A6791371 /* iCielVAGRoundedNext-Medium.otf */; };
 		CC35FD58235962F3008264C5 /* iCielVAGRoundedNext-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 979E6494221A4EF8B1D1E337 /* iCielVAGRoundedNext-Regular.otf */; };
+		CC9483592407AB7A00BC8D98 /* box_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CC9483512407AB7A00BC8D98 /* box_down.mp3 */; };
+		CC94835A2407AB7A00BC8D98 /* icon_choose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CC9483552407AB7A00BC8D98 /* icon_choose.mp3 */; };
+		CC94835B2407AB7A00BC8D98 /* short_press_like.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CC9483562407AB7A00BC8D98 /* short_press_like.mp3 */; };
+		CC94835C2407AB7A00BC8D98 /* box_up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CC9483572407AB7A00BC8D98 /* box_up.mp3 */; };
+		CC94835D2407AB7A00BC8D98 /* icon_focus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CC9483582407AB7A00BC8D98 /* icon_focus.mp3 */; };
 		D84317CB531EB1DC336A74D0 /* libPods-RNTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4271938CCCEA0ADADD519C2E /* libPods-RNTemplate.a */; };
 /* End PBXBuildFile section */
 
@@ -335,6 +340,11 @@
 		A99A456381A6470F8F4D8BB6 /* iCielVAGRoundedNext-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "iCielVAGRoundedNext-Light.otf"; path = "../assets/fonts/iCielVAGRoundedNext-Light.otf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		BE11D6DBFC8E476AB0EFFC81 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		CC9483512407AB7A00BC8D98 /* box_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = box_down.mp3; path = ../android/app/src/main/res/raw/box_down.mp3; sourceTree = "<group>"; };
+		CC9483552407AB7A00BC8D98 /* icon_choose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = icon_choose.mp3; path = ../android/app/src/main/res/raw/icon_choose.mp3; sourceTree = "<group>"; };
+		CC9483562407AB7A00BC8D98 /* short_press_like.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = short_press_like.mp3; path = ../android/app/src/main/res/raw/short_press_like.mp3; sourceTree = "<group>"; };
+		CC9483572407AB7A00BC8D98 /* box_up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = box_up.mp3; path = ../android/app/src/main/res/raw/box_up.mp3; sourceTree = "<group>"; };
+		CC9483582407AB7A00BC8D98 /* icon_focus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = icon_focus.mp3; path = ../android/app/src/main/res/raw/icon_focus.mp3; sourceTree = "<group>"; };
 		D46BA083F8434D69AD98A411 /* iCielVAGRoundedNext-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "iCielVAGRoundedNext-Bold.otf"; path = "../assets/fonts/iCielVAGRoundedNext-Bold.otf"; sourceTree = "<group>"; };
 		D5CD52B2BD4C4AB590B3FA15 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		E0467AB8E06E455490F6BB3A /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
@@ -543,6 +553,11 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				CC9483512407AB7A00BC8D98 /* box_down.mp3 */,
+				CC9483572407AB7A00BC8D98 /* box_up.mp3 */,
+				CC9483552407AB7A00BC8D98 /* icon_choose.mp3 */,
+				CC9483582407AB7A00BC8D98 /* icon_focus.mp3 */,
+				CC9483562407AB7A00BC8D98 /* short_press_like.mp3 */,
 				13B07FAE1A68108700A75B9A /* RNTemplate */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* RNTemplateTests */,
@@ -1019,12 +1034,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC35FD53235962F3008264C5 /* iCielVAGRoundedNext-Bold.otf in Resources */,
+				CC94835C2407AB7A00BC8D98 /* box_up.mp3 in Resources */,
 				CC35FD54235962F3008264C5 /* iCielVAGRoundedNext-DemiBold.otf in Resources */,
 				CC35FD55235962F3008264C5 /* iCielVAGRoundedNext-Light.otf in Resources */,
 				CC35FD56235962F3008264C5 /* iCielVAGRoundedNext-LightItalic.otf in Resources */,
+				CC94835D2407AB7A00BC8D98 /* icon_focus.mp3 in Resources */,
+				CC9483592407AB7A00BC8D98 /* box_down.mp3 in Resources */,
 				CC35FD57235962F3008264C5 /* iCielVAGRoundedNext-Medium.otf in Resources */,
+				CC94835B2407AB7A00BC8D98 /* short_press_like.mp3 in Resources */,
 				CC35FD58235962F3008264C5 /* iCielVAGRoundedNext-Regular.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				CC94835A2407AB7A00BC8D98 /* icon_choose.mp3 in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
