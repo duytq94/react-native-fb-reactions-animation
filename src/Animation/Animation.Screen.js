@@ -1,13 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Animated,
-  BackHandler,
-  Image,
-  PanResponder,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Animated, BackHandler, PanResponder, Text, View} from 'react-native';
 import Sound from 'react-native-sound';
 import styles from './Animation.Style';
 import images from '../Themes/Images';
@@ -16,28 +8,27 @@ import FastImage from 'react-native-fast-image';
 export default class AnimationScreen extends Component {
   constructor(props) {
     super(props);
-    this.backPress = this.handleBackPress.bind(this);
 
     this.soundBoxDown = new Sound(
       'box_down.mp3',
       Sound.MAIN_BUNDLE,
-      error => {},
+      (error) => {},
     );
-    this.soundBoxUp = new Sound('box_up.mp3', Sound.MAIN_BUNDLE, error => {});
+    this.soundBoxUp = new Sound('box_up.mp3', Sound.MAIN_BUNDLE, (error) => {});
     this.soundIconChoose = new Sound(
       'icon_choose.mp3',
       Sound.MAIN_BUNDLE,
-      error => {},
+      (error) => {},
     );
     this.soundIconFocus = new Sound(
       'icon_focus.mp3',
       Sound.MAIN_BUNDLE,
-      error => {},
+      (error) => {},
     );
     this.soundShortTouchLike = new Sound(
       'short_press_like.mp3',
       Sound.MAIN_BUNDLE,
-      error => {},
+      (error) => {},
     );
 
     // Slow down speed animation here (1 = default)
@@ -126,21 +117,8 @@ export default class AnimationScreen extends Component {
     this.moveLeftIconWowWhenRelease = new Animated.Value(173);
     this.moveLeftIconSadWhenRelease = new Animated.Value(226);
     this.moveLeftIconAngryWhenRelease = new Animated.Value(278);
-  }
-
-  componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.backPress);
 
     this.setupPanResponder();
-  }
-
-  componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.backPress);
-  }
-
-  handleBackPress() {
-    this.props.navigation.goBack();
-    return true;
   }
 
   // Handle the drag gesture
@@ -297,14 +275,17 @@ export default class AnimationScreen extends Component {
         Animated.timing(this.tiltIconAnim, {
           toValue: 1,
           duration: this.durationAnimationQuickTouch * this.timeDilation,
+          useNativeDriver: false,
         }),
         Animated.timing(this.zoomIconAnim, {
           toValue: 1,
           duration: this.durationAnimationQuickTouch * this.timeDilation,
+          useNativeDriver: false,
         }),
         Animated.timing(this.zoomTextAnim, {
           toValue: 1,
           duration: this.durationAnimationQuickTouch * this.timeDilation,
+          useNativeDriver: false,
         }),
       ]).start();
     } else {
@@ -318,14 +299,17 @@ export default class AnimationScreen extends Component {
         Animated.timing(this.tiltIconAnim, {
           toValue: 0,
           duration: this.durationAnimationQuickTouch * this.timeDilation,
+          useNativeDriver: false,
         }),
         Animated.timing(this.zoomIconAnim, {
           toValue: 0,
           duration: this.durationAnimationQuickTouch * this.timeDilation,
+          useNativeDriver: false,
         }),
         Animated.timing(this.zoomTextAnim, {
           toValue: 0,
           duration: this.durationAnimationQuickTouch * this.timeDilation,
+          useNativeDriver: false,
         }),
       ]).start();
     }
@@ -370,20 +354,24 @@ export default class AnimationScreen extends Component {
       Animated.timing(this.tiltIconAnim2, {
         toValue: 1,
         duration: this.durationAnimationLongTouch * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.zoomIconAnim2, {
         toValue: 0.8,
         duration: this.durationAnimationLongTouch * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.zoomTextAnim2, {
         toValue: 0.8,
         duration: this.durationAnimationLongTouch * this.timeDilation,
+        useNativeDriver: false,
       }),
 
       // Box
       Animated.timing(this.fadeBoxAnim, {
         toValue: 1,
         duration: this.durationAnimationBox * this.timeDilation,
+        useNativeDriver: false,
         delay: 350,
       }),
 
@@ -391,69 +379,82 @@ export default class AnimationScreen extends Component {
       Animated.timing(this.moveRightGroupIcon, {
         toValue: 20,
         duration: this.durationAnimationBox * this.timeDilation,
+        useNativeDriver: false,
       }),
 
       Animated.timing(this.pushIconLikeUp, {
         toValue: 25,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.zoomIconLike, {
         toValue: 1,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
       }),
 
       Animated.timing(this.pushIconLoveUp, {
         toValue: 25,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 50,
       }),
       Animated.timing(this.zoomIconLove, {
         toValue: 1,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 50,
       }),
 
       Animated.timing(this.pushIconHahaUp, {
         toValue: 25,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 100,
       }),
       Animated.timing(this.zoomIconHaha, {
         toValue: 1,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 100,
       }),
 
       Animated.timing(this.pushIconWowUp, {
         toValue: 25,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 150,
       }),
       Animated.timing(this.zoomIconWow, {
         toValue: 1,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 150,
       }),
 
       Animated.timing(this.pushIconSadUp, {
         toValue: 25,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 200,
       }),
       Animated.timing(this.zoomIconSad, {
         toValue: 1,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 200,
       }),
 
       Animated.timing(this.pushIconAngryUp, {
         toValue: 25,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 250,
       }),
       Animated.timing(this.zoomIconAngry, {
         toValue: 1,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 250,
       }),
     ]).start();
@@ -491,89 +492,106 @@ export default class AnimationScreen extends Component {
       Animated.timing(this.tiltIconAnim2, {
         toValue: 0,
         duration: this.durationAnimationLongTouch * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.zoomIconAnim2, {
         toValue: 1,
         duration: this.durationAnimationLongTouch * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.zoomTextAnim2, {
         toValue: 1,
         duration: this.durationAnimationLongTouch * this.timeDilation,
+        useNativeDriver: false,
       }),
 
       // Box
       Animated.timing(this.fadeBoxAnim, {
         toValue: 0,
         duration: this.durationAnimationLongTouch * this.timeDilation,
+        useNativeDriver: false,
       }),
 
       // Group emoticon
       Animated.timing(this.moveRightGroupIcon, {
         toValue: 10,
         duration: this.durationAnimationBox * this.timeDilation,
+        useNativeDriver: false,
       }),
 
       Animated.timing(this.pushIconLikeUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.zoomIconLike, {
         toValue: 0.01,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
       }),
 
       Animated.timing(this.pushIconLoveUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 50,
       }),
       Animated.timing(this.zoomIconLove, {
         toValue: 0.01,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 50,
       }),
 
       Animated.timing(this.pushIconHahaUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 100,
       }),
       Animated.timing(this.zoomIconHaha, {
         toValue: 0.01,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 100,
       }),
 
       Animated.timing(this.pushIconWowUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 150,
       }),
       Animated.timing(this.zoomIconWow, {
         toValue: 0.01,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 150,
       }),
 
       Animated.timing(this.pushIconSadUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 200,
       }),
       Animated.timing(this.zoomIconSad, {
         toValue: 0.01,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 200,
       }),
 
       Animated.timing(this.pushIconAngryUp, {
         toValue: 0,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 250,
       }),
       Animated.timing(this.zoomIconAngry, {
         toValue: 0.01,
         duration: 250 * this.timeDilation,
+        useNativeDriver: false,
         delay: 250,
       }),
     ]).start(this.onAnimationLongTouchComplete);
@@ -586,7 +604,7 @@ export default class AnimationScreen extends Component {
 
   // ------------------------------------------------------------------------------
   // Animation for zoom emoticons when drag
-  handleWhenDragBetweenIcon = currentIcon => {
+  handleWhenDragBetweenIcon = (currentIcon) => {
     this.whichIconUserChoose = currentIcon;
     this.previousIconFocus = this.currentIconFocus;
     this.currentIconFocus = currentIcon;
@@ -614,23 +632,28 @@ export default class AnimationScreen extends Component {
           Animated.timing(this.zoomIconChosen, {
             toValue: 1.8,
             duration: this.durationAnimationIconWhenDrag * this.timeDilation,
+            useNativeDriver: false,
           }),
           Animated.timing(this.zoomIconNotChosen, {
             toValue: 0.8,
             duration: this.durationAnimationIconWhenDrag * this.timeDilation,
+            useNativeDriver: false,
           }),
           Animated.timing(this.zoomBoxWhenDragInside, {
             toValue: 0.95,
             duration: this.durationAnimationIconWhenDrag * this.timeDilation,
+            useNativeDriver: false,
           }),
 
           Animated.timing(this.pushTextDescriptionUp, {
             toValue: 90,
             duration: this.durationAnimationIconWhenDrag * this.timeDilation,
+            useNativeDriver: false,
           }),
           Animated.timing(this.zoomTextDescription, {
             toValue: 1.7,
             duration: this.durationAnimationIconWhenDrag * this.timeDilation,
+            useNativeDriver: false,
           }),
         ]).start(),
       50,
@@ -644,6 +667,7 @@ export default class AnimationScreen extends Component {
     Animated.timing(this.zoomIconWhenDragInside, {
       toValue: 0.8,
       duration: this.durationAnimationIconWhenDrag * this.timeDilation,
+      useNativeDriver: false,
     }).start(this.onAnimationIconWhenDragInsideComplete);
   };
 
@@ -658,6 +682,7 @@ export default class AnimationScreen extends Component {
     Animated.timing(this.zoomIconWhenDragOutside, {
       toValue: 1.0,
       duration: this.durationAnimationIconWhenDrag * this.timeDilation,
+      useNativeDriver: false,
     }).start();
   };
 
@@ -667,6 +692,7 @@ export default class AnimationScreen extends Component {
     Animated.timing(this.zoomBoxWhenDragOutside, {
       toValue: 1.0,
       duration: this.durationAnimationIconWhenDrag * this.timeDilation,
+      useNativeDriver: false,
     }).start();
   };
 
@@ -686,34 +712,42 @@ export default class AnimationScreen extends Component {
       Animated.timing(this.zoomIconWhenRelease, {
         toValue: 0,
         duration: this.durationAnimationIconWhenRelease * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.moveUpDownIconWhenRelease, {
         toValue: 1,
         duration: this.durationAnimationIconWhenRelease * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.moveLeftIconLikeWhenRelease, {
         toValue: 0,
         duration: this.durationAnimationIconWhenRelease * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.moveLeftIconLoveWhenRelease, {
         toValue: 0,
         duration: this.durationAnimationIconWhenRelease * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.moveLeftIconHahaWhenRelease, {
         toValue: 0,
         duration: this.durationAnimationIconWhenRelease * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.moveLeftIconWowWhenRelease, {
         toValue: 0,
         duration: this.durationAnimationIconWhenRelease * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.moveLeftIconSadWhenRelease, {
         toValue: 0,
         duration: this.durationAnimationIconWhenRelease * this.timeDilation,
+        useNativeDriver: false,
       }),
       Animated.timing(this.moveLeftIconAngryWhenRelease, {
         toValue: 0,
         duration: this.durationAnimationIconWhenRelease * this.timeDilation,
+        useNativeDriver: false,
       }),
     ]).start();
 
@@ -727,15 +761,6 @@ export default class AnimationScreen extends Component {
   render() {
     return (
       <View style={styles.viewContainer}>
-        {/* Toolbar */}
-        <View style={styles.toolbar}>
-          <TouchableOpacity onPress={() => this.handleBackPress()}>
-            <Image style={styles.icBack} source={images.ic_back} />
-          </TouchableOpacity>
-          <Text style={styles.titleToolbar}>ANIMATION</Text>
-          <View style={styles.icTrail} />
-        </View>
-
         {/* Body */}
         <View style={styles.viewBody} {...this.rootPanResponder.panHandlers}>
           {/* Top space */}
@@ -978,8 +1003,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/like.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/like.gif',
               }}
             />
           </Animated.View>
@@ -1021,8 +1045,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/love.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/love.gif',
               }}
             />
           </Animated.View>
@@ -1064,8 +1087,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/haha.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/haha.gif',
               }}
             />
           </Animated.View>
@@ -1107,8 +1129,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/wow.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/wow.gif',
               }}
             />
           </Animated.View>
@@ -1150,8 +1171,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/sad.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/sad.gif',
               }}
             />
           </Animated.View>
@@ -1193,8 +1213,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/angry.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/angry.gif',
               }}
             />
           </Animated.View>
@@ -1225,8 +1244,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/like.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/like.gif',
               }}
             />
           </Animated.View>
@@ -1246,8 +1264,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/love.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/love.gif',
               }}
             />
           </Animated.View>
@@ -1267,8 +1284,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/haha.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/haha.gif',
               }}
             />
           </Animated.View>
@@ -1288,8 +1304,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/wow.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/wow.gif',
               }}
             />
           </Animated.View>
@@ -1309,8 +1324,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/sad.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/sad.gif',
               }}
             />
           </Animated.View>
@@ -1330,8 +1344,7 @@ export default class AnimationScreen extends Component {
             <FastImage
               style={styles.imgIcon}
               source={{
-                uri:
-                  'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/angry.gif',
+                uri: 'https://raw.githubusercontent.com/duytq94/facebook-reaction-animation2/master/Images/angry.gif',
               }}
             />
           </Animated.View>

@@ -8,7 +8,7 @@ export default class MainScreen extends Component {
     this.state = {
       currentSpeed: 1,
     };
-    BackHandler.addEventListener('hardwareBackPress', function() {
+    BackHandler.addEventListener('hardwareBackPress', function () {
       Alert.alert(
         'Exit app',
         'Are you sure to exit?',
@@ -33,10 +33,6 @@ export default class MainScreen extends Component {
   render() {
     return (
       <View style={styles.viewContainer}>
-        <View style={styles.toolbar}>
-          <Text style={styles.titleToolbar}>MAIN</Text>
-        </View>
-
         <View style={styles.viewContainer}>
           {/*Set currentSpeed*/}
           <View style={styles.viewWrapSetSpeed}>

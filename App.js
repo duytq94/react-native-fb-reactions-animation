@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import MainScreen from './src/Main/Main.Screen';
 import AnimationScreen from './src/Animation/Animation.Screen';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default class App extends Component {
   render() {
@@ -15,12 +14,28 @@ export default class App extends Component {
           <Stack.Screen
             name="MainScreen"
             component={MainScreen}
-            options={{gestureEnabled: true, gestureDirection: 'horizontal'}}
+            options={{
+              title: 'Main',
+              gestureEnabled: true,
+              gestureDirection: 'horizontal',
+              headerStyle: {
+                backgroundColor: '#3b5998',
+              },
+              headerTintColor: '#fff',
+            }}
           />
           <Stack.Screen
             name="AnimationScreen"
+            options={{
+              title: 'Animation',
+              gestureEnabled: true,
+              gestureDirection: 'horizontal',
+              headerStyle: {
+                backgroundColor: '#3b5998',
+              },
+              headerTintColor: '#fff',
+            }}
             component={AnimationScreen}
-            options={{gestureEnabled: true, gestureDirection: 'horizontal'}}
           />
         </Stack.Navigator>
       </NavigationContainer>
