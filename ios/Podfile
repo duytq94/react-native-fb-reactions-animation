@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '11.0'
 
-target 'RNTemplate' do
+target 'FacebookReactionAnimation' do
   config = use_native_modules!
 
   use_react_native!(
@@ -12,7 +12,7 @@ target 'RNTemplate' do
     :hermes_enabled => false
   )
 
-  target 'RNTemplateTests' do
+  target 'FacebookReactionAnimationTests' do
     inherit! :complete
     # Pods for testing
   end

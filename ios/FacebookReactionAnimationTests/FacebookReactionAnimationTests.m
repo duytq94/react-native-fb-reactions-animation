@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface RNTemplateTests : XCTestCase
+@interface FacebookReactionAnimationTests : XCTestCase
 
 @end
 
-@implementation RNTemplateTests
+@implementation FacebookReactionAnimationTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

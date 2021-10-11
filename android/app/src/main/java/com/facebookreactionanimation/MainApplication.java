@@ -1,4 +1,4 @@
-package com.rntemplate;
+package com.facebookreactionanimation;
 
 import android.app.Application;
 import android.content.Context;
