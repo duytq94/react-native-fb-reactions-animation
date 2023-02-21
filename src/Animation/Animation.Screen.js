@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Animated, BackHandler, PanResponder, Text, View} from 'react-native';
+import {Animated, PanResponder, Text, View} from 'react-native';
 import Sound from 'react-native-sound';
 import styles from './Animation.Style';
 import images from '../Themes/Images';
@@ -75,7 +75,7 @@ export default class AnimationScreen extends Component {
     this.moveRightGroupIcon = new Animated.Value(10);
     // Like
     this.pushIconLikeUp = new Animated.Value(0);
-    // I don't know why, but when I set to 0.0, it seem blink,
+    // I don't know why, but when I set to 0.0, it seems blink,
     // so temp solution is set to 0.01
     this.zoomIconLike = new Animated.Value(0.01);
     // Love
